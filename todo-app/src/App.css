@@ -2,13 +2,13 @@
 
 /* Main container with card design */
 .app {
-  max-width: 650px;
-  width: 90%;
-  margin: 2rem auto;
-  padding: 3rem;
+  max-width: 100%;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 2rem;
   background: var(--color-card-bg);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-xl);
+  box-shadow: none;
   animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
@@ -419,9 +419,7 @@ h1 {
 /* Responsive design */
 @media (max-width: 768px) {
   .app {
-    padding: 2rem;
-    width: 95%;
-    margin: 1rem auto;
+    padding: 1.5rem;
   }
   
   h1 {
@@ -449,8 +447,7 @@ h1 {
 
 @media (max-width: 480px) {
   .app {
-    padding: 1.5rem;
-    border-radius: var(--radius-md);
+    padding: 1rem;
   }
   
   h1 {
@@ -474,6 +471,67 @@ h1 {
   
   .filter-section button {
     width: 100%;
+  }
+}
+
+@media (min-width: 769px) {
+  .app {
+    padding: 3rem 4rem;
+  }
+  
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+  }
+  
+  .input-section {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .filter-section {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .todo-list {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .footer {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (min-width: 1200px) {
+  .app {
+    padding: 4rem 6rem;
+  }
+  
+  h1 {
+    font-size: 3.5rem;
+  }
+  
+  .input-section {
+    max-width: 1000px;
+  }
+  
+  .filter-section {
+    max-width: 700px;
+  }
+  
+  .todo-list {
+    max-width: 1100px;
+  }
+  
+  .footer {
+    max-width: 1100px;
   }
 }
 
