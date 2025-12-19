@@ -1,3 +1,4 @@
+// Type definitions for Todo App
 export interface Todo {
   id: number;
   text: string;
