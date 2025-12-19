@@ -1,42 +1,142 @@
-#root {
-  max-width: 1280px;
+.app {
+  max-width: 600px;
   margin: 0 auto;
   padding: 2rem;
+}
+
+h1 {
   text-align: center;
+  color: #333;
+  margin-bottom: 2rem;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.input-section {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.input-section input {
+  flex: 1;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 4px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.input-section input:focus {
+  outline: none;
+  border-color: #4CAF50;
 }
 
-.card {
-  padding: 2em;
+.input-section button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.read-the-docs {
+.input-section button:hover {
+  background-color: #45a049;
+}
+
+.filter-section {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  justify-content: center;
+}
+
+.filter-section button {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  background-color: #f0f0f0;
+  color: #333;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.filter-section button:hover {
+  background-color: #e0e0e0;
+}
+
+.filter-section button.active {
+  background-color: #4CAF50;
+  color: white;
+  border-color: #4CAF50;
+}
+
+.todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.todo-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  transition: background-color 0.3s;
+}
+
+.todo-list li:hover {
+  background-color: #f0f0f0;
+}
+
+.todo-list li.completed {
+  opacity: 0.6;
+}
+
+.todo-list li input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.todo-list li span {
+  flex: 1;
+  cursor: pointer;
+  user-select: none;
+}
+
+.todo-list li.completed span {
+  text-decoration: line-through;
   color: #888;
 }
+
+.todo-list li button {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.todo-list li button:hover {
+  background-color: #da190b;
+}
+
+.footer {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  text-align: center;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  color: #666;
+  font-size: 0.9rem;
+}
+
