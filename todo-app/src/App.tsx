@@ -5,6 +5,7 @@ import type { Todo, FilterType } from './types'
 function App() {
   const [todos, setTodos] = useState<Todo[]>([])
   const [inputText, setInputText] = useState('')
+  const [dueDate, setDueDate] = useState('')
   const [filter, setFilter] = useState<FilterType>('all')
 
   const addTodo = () => {
@@ -13,11 +14,13 @@ function App() {
     const newTodo: Todo = {
       id: Date.now(),
       text: inputText,
-      completed: false
+      completed: false,
+      dueDate: dueDate || undefined
     }
     
     setTodos([...todos, newTodo])
     setInputText('')
+    setDueDate('')
   }
 
   const toggleTodo = (id: number) => {
@@ -38,6 +41,14 @@ function App() {
 
   const activeTodoCount = todos.filter(todo => !todo.completed).length
 
+  const isOverdue = (dueDate?: string) => {
+    if (!dueDate) return false
+    const today = new Date()
+    today.setHours(0, 0, 0, 0)
+    const due = new Date(dueDate)
+    return due < today
+  }
+
   return (
     <div className="app">
       <h1>Todo App</h1>
@@ -49,6 +60,12 @@ function App() {
           onChange={(e) => setInputText(e.target.value)}
           onKeyPress={(e) => e.key === 'Enter' && addTodo()}
           placeholder="新しいTodoを入力..."
+        />
+        <input
+          type="date"
+          value={dueDate}
+          onChange={(e) => setDueDate(e.target.value)}
+          className="date-input"
         />
         <button onClick={addTodo}>追加</button>
       </div>
@@ -76,13 +93,20 @@ function App() {
 
       <ul className="todo-list">
         {filteredTodos.map(todo => (
-          <li key={todo.id} className={todo.completed ? 'completed' : ''}>
+          <li key={todo.id} className={`${todo.completed ? 'completed' : ''} ${!todo.completed && isOverdue(todo.dueDate) ? 'overdue' : ''}`}>
             <input
               type="checkbox"
               checked={todo.completed}
               onChange={() => toggleTodo(todo.id)}
             />
-            <span onClick={() => toggleTodo(todo.id)}>{todo.text}</span>
+            <span onClick={() => toggleTodo(todo.id)}>
+              {todo.text}
+              {todo.dueDate && (
+                <span className="due-date">
+                  期限: {new Date(todo.dueDate).toLocaleDateString('ja-JP')}
+                </span>
+              )}
+            </span>
             <button onClick={() => deleteTodo(todo.id)}>削除</button>
           </li>
         ))}

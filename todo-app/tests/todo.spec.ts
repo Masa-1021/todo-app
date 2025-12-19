@@ -86,4 +86,55 @@ test.describe('Todo App', () => {
     await expect(page.getByText('Active Todo')).toBeVisible();
     await expect(page.getByText('Completed Todo')).toBeVisible();
   });
+
+  test('should add a todo with a due date', async ({ page }) => {
+    await page.goto('/');
+    
+    // Fill in the todo text and due date
+    const input = page.locator('input[type="text"][placeholder*="新しいTodo"]');
+    await input.fill('Todo with Deadline');
+    
+    const dateInput = page.locator('input[type="date"]');
+    await dateInput.fill('2025-12-31');
+    
+    // Click the add button
+    await page.getByRole('button', { name: '追加' }).click();
+    
+    // Verify the todo was added with due date
+    await expect(page.getByText('Todo with Deadline')).toBeVisible();
+    await expect(page.getByText('期限: 2025/12/31')).toBeVisible();
+  });
+
+  test('should add a todo without a due date', async ({ page }) => {
+    await page.goto('/');
+    
+    // Fill in only the todo text
+    const input = page.locator('input[type="text"][placeholder*="新しいTodo"]');
+    await input.fill('Todo without Deadline');
+    
+    // Click the add button
+    await page.getByRole('button', { name: '追加' }).click();
+    
+    // Verify the todo was added without showing a due date
+    await expect(page.getByText('Todo without Deadline')).toBeVisible();
+    const todoItem = page.locator('.todo-list li', { hasText: 'Todo without Deadline' });
+    await expect(todoItem.locator('.due-date')).not.toBeVisible();
+  });
+
+  test('should display overdue todos with special styling', async ({ page }) => {
+    await page.goto('/');
+    
+    // Add a todo with a past due date
+    const input = page.locator('input[type="text"][placeholder*="新しいTodo"]');
+    await input.fill('Overdue Todo');
+    
+    const dateInput = page.locator('input[type="date"]');
+    await dateInput.fill('2024-01-01');
+    
+    await page.getByRole('button', { name: '追加' }).click();
+    
+    // Verify the todo has the overdue class
+    const todoItem = page.locator('.todo-list li', { hasText: 'Overdue Todo' });
+    await expect(todoItem).toHaveClass(/overdue/);
+  });
 });
