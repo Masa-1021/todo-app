@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import { Todo, FilterType } from './types'
+import type { Todo, FilterType } from './types'
 
 function App() {
   const [todos, setTodos] = useState<Todo[]>([])
