@@ -1,4 +1,4 @@
-import { createContext, useReducer, useEffect, useMemo, useState, type ReactNode } from 'react';
+import { createContext, useReducer, useEffect, useMemo, useRef, type ReactNode } from 'react';
 import type { Todo, FilterType, TodoState } from '../types/todo';
 import { todoReducer } from './todoReducer';
 import { StorageService } from '../services/StorageService';
@@ -18,6 +18,7 @@ export interface TodoContextValue {
 }
 
 // Context作成
+// eslint-disable-next-line react-refresh/only-export-components
 export const TodoContext = createContext<TodoContextValue | undefined>(undefined);
 
 // 初期状態
@@ -50,7 +51,7 @@ interface TodoProviderProps {
  */
 export function TodoProvider({ children }: TodoProviderProps) {
   const [state, dispatch] = useReducer(todoReducer, initialState);
-  const [isInitialized, setIsInitialized] = useState(false);
+  const isInitializedRef = useRef(false);
 
   // 初期表示時にlocalStorageからデータを読み込む
   useEffect(() => {
@@ -58,15 +59,15 @@ export function TodoProvider({ children }: TodoProviderProps) {
     if (savedData && savedData.todos) {
       dispatch({ type: 'LOAD_TODOS', payload: { todos: savedData.todos } });
     }
-    setIsInitialized(true);
+    isInitializedRef.current = true;
   }, []);
 
   // todosが変更されたらlocalStorageに保存（初期化後のみ）
   useEffect(() => {
-    if (isInitialized) {
+    if (isInitializedRef.current) {
       StorageService.save(STORAGE_KEY, { todos: state.todos });
     }
-  }, [state.todos, isInitialized]);
+  }, [state.todos]);
 
   // フィルタリングされたTodos（メモ化）
   const filteredTodos = useMemo(
