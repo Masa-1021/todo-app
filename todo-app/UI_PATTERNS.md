@@ -87,5 +87,6 @@
 
 1. `src/themes/`ディレクトリに新しいCSSファイルを作成
 2. `ThemeSwitcher.tsx`のテーマ配列に新しいテーマを追加
-3. `App.tsx`で新しいテーマのCSSをインポート
-4. `types.ts`の`ThemeType`に新しいテーマ名を追加
+3. `ThemeSwitcher.tsx`の`ThemeType`に新しいテーマ名を追加
+4. `App.tsx`で新しいテーマのCSSをインポート
+5. `App.tsx`の`validThemes`配列に新しいテーマ名を追加

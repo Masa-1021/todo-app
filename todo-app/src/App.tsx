@@ -11,7 +11,10 @@ function App() {
   const [filter, setFilter] = useState<FilterType>('all')
   const [theme, setTheme] = useState<ThemeType>(() => {
     const savedTheme = localStorage.getItem('todo-app-theme')
-    return (savedTheme as ThemeType) || 'modern'
+    const validThemes: ThemeType[] = ['modern', 'minimal', 'compact']
+    return validThemes.includes(savedTheme as ThemeType) 
+      ? (savedTheme as ThemeType) 
+      : 'modern'
   })
 
   useEffect(() => {
