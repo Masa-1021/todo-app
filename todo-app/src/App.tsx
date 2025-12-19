@@ -1,11 +1,25 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
+import './themes/minimal.css'
+import './themes/compact.css'
+import ThemeSwitcher, { type ThemeType } from './ThemeSwitcher'
 import type { Todo, FilterType } from './types'
 
 function App() {
   const [todos, setTodos] = useState<Todo[]>([])
   const [inputText, setInputText] = useState('')
   const [filter, setFilter] = useState<FilterType>('all')
+  const [theme, setTheme] = useState<ThemeType>(() => {
+    const savedTheme = localStorage.getItem('todo-app-theme')
+    const validThemes: ThemeType[] = ['modern', 'minimal', 'compact']
+    return validThemes.includes(savedTheme as ThemeType) 
+      ? (savedTheme as ThemeType) 
+      : 'modern'
+  })
+
+  useEffect(() => {
+    localStorage.setItem('todo-app-theme', theme)
+  }, [theme])
 
   const addTodo = () => {
     if (inputText.trim() === '') return
@@ -39,8 +53,10 @@ function App() {
   const activeTodoCount = todos.filter(todo => !todo.completed).length
 
   return (
-    <div className="app">
-      <h1>Todo App</h1>
+    <>
+      <ThemeSwitcher currentTheme={theme} onThemeChange={setTheme} />
+      <div className={`app theme-${theme}`}>
+        <h1>Todo App</h1>
       
       <div className="input-section">
         <input
@@ -93,7 +109,8 @@ function App() {
           残り: {activeTodoCount}件
         </div>
       )}
-    </div>
+      </div>
+    </>
   )
 }
 

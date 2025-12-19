@@ -1,0 +1,275 @@
+/* Pattern 1: Minimal/Clean Design */
+/* Simple, flat design with minimal colors and focus on functionality */
+
+.app.theme-minimal {
+  max-width: 600px;
+  width: 90%;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  animation: none;
+}
+
+.app.theme-minimal::before {
+  display: none;
+}
+
+.app.theme-minimal h1 {
+  text-align: center;
+  color: #333333;
+  background: none;
+  -webkit-text-fill-color: inherit;
+  margin-bottom: 2rem;
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  animation: none;
+}
+
+.app.theme-minimal .input-section {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  animation: none;
+}
+
+.app.theme-minimal .input-section input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  border: 1px solid #d0d0d0;
+  border-radius: 3px;
+  background-color: #ffffff;
+  color: #333333;
+  transition: border-color 0.2s ease;
+}
+
+.app.theme-minimal .input-section input::placeholder {
+  color: #999999;
+}
+
+.app.theme-minimal .input-section input:focus {
+  border-color: #666666;
+  background-color: #ffffff;
+  box-shadow: none;
+  transform: none;
+  outline: none;
+}
+
+.app.theme-minimal .input-section button {
+  padding: 0.75rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  background: #333333;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  box-shadow: none;
+  white-space: nowrap;
+}
+
+.app.theme-minimal .input-section button:hover {
+  background: #555555;
+  transform: none;
+  box-shadow: none;
+}
+
+.app.theme-minimal .input-section button:active {
+  background: #222222;
+  transform: none;
+}
+
+.app.theme-minimal .filter-section {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: none;
+}
+
+.app.theme-minimal .filter-section button {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background-color: #ffffff;
+  color: #666666;
+  border: 1px solid #d0d0d0;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: visible;
+}
+
+.app.theme-minimal .filter-section button::before {
+  display: none;
+}
+
+.app.theme-minimal .filter-section button:hover {
+  border-color: #999999;
+  transform: none;
+  box-shadow: none;
+  background-color: #f5f5f5;
+}
+
+.app.theme-minimal .filter-section button.active {
+  background: #333333;
+  color: white;
+  border-color: #333333;
+  box-shadow: none;
+}
+
+.app.theme-minimal .todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  min-height: 50px;
+}
+
+.app.theme-minimal .todo-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 3px;
+  margin-bottom: 0.5rem;
+  transition: border-color 0.2s ease;
+  animation: none;
+  position: relative;
+  overflow: visible;
+}
+
+.app.theme-minimal .todo-list li::before {
+  display: none;
+}
+
+.app.theme-minimal .todo-list li:hover {
+  border-color: #b0b0b0;
+  box-shadow: none;
+  transform: none;
+}
+
+.app.theme-minimal .todo-list li.completed {
+  opacity: 0.5;
+  background: #fafafa;
+}
+
+.app.theme-minimal .todo-list li.completed:hover {
+  opacity: 0.65;
+}
+
+.app.theme-minimal .todo-list li input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  border: 2px solid #d0d0d0;
+  border-radius: 3px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+  background-color: white;
+}
+
+.app.theme-minimal .todo-list li input[type="checkbox"]:hover {
+  border-color: #999999;
+  box-shadow: none;
+}
+
+.app.theme-minimal .todo-list li input[type="checkbox"]:checked {
+  background: #333333;
+  border-color: #333333;
+}
+
+.app.theme-minimal .todo-list li input[type="checkbox"]:checked::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 6px;
+  width: 4px;
+  height: 9px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  animation: none;
+}
+
+.app.theme-minimal .todo-list li span {
+  flex: 1;
+  cursor: pointer;
+  user-select: none;
+  color: #333333;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  transition: color 0.2s ease;
+  word-break: break-word;
+}
+
+.app.theme-minimal .todo-list li span:hover {
+  color: #666666;
+}
+
+.app.theme-minimal .todo-list li.completed span {
+  text-decoration: line-through;
+  color: #999999;
+}
+
+.app.theme-minimal .todo-list li button {
+  padding: 0.4rem 0.875rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  background: #ffffff;
+  color: #666666;
+  border: 1px solid #d0d0d0;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: none;
+  white-space: nowrap;
+}
+
+.app.theme-minimal .todo-list li button:hover {
+  background: #333333;
+  color: white;
+  border-color: #333333;
+  transform: none;
+  box-shadow: none;
+}
+
+.app.theme-minimal .todo-list li button:active {
+  background: #222222;
+  transform: none;
+}
+
+.app.theme-minimal .footer {
+  margin-top: 1.5rem;
+  padding: 0.875rem;
+  text-align: center;
+  background: #f5f5f5;
+  border-radius: 3px;
+  color: #666666;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: 1px solid #e0e0e0;
+  animation: none;
+}
+
+.app.theme-minimal .todo-list:empty::after {
+  content: 'タスクを追加して始めましょう！';
+  display: block;
+  text-align: center;
+  padding: 2rem 1rem;
+  color: #999999;
+  font-size: 1rem;
+  font-weight: 400;
+  opacity: 1;
+}

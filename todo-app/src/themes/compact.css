@@ -1,0 +1,282 @@
+/* Pattern 3: Compact/Dense Layout */
+/* Maximize information density with compact spacing for power users */
+
+.app.theme-compact {
+  max-width: 800px;
+  width: 90%;
+  margin: 1rem auto;
+  padding: 1.5rem;
+  background: #1e1e1e;
+  border: 1px solid #333333;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  animation: none;
+}
+
+.app.theme-compact::before {
+  display: none;
+}
+
+.app.theme-compact h1 {
+  text-align: left;
+  color: #ffffff;
+  background: none;
+  -webkit-text-fill-color: inherit;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  animation: none;
+  border-bottom: 2px solid #333333;
+  padding-bottom: 0.5rem;
+}
+
+.app.theme-compact .input-section {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  animation: none;
+}
+
+.app.theme-compact .input-section input {
+  flex: 1;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  border: 1px solid #333333;
+  border-radius: 4px;
+  background-color: #2a2a2a;
+  color: #e0e0e0;
+  transition: border-color 0.2s ease;
+}
+
+.app.theme-compact .input-section input::placeholder {
+  color: #888888;
+}
+
+.app.theme-compact .input-section input:focus {
+  border-color: #4a9eff;
+  background-color: #2a2a2a;
+  box-shadow: 0 0 0 2px rgba(74, 158, 255, 0.2);
+  transform: none;
+  outline: none;
+}
+
+.app.theme-compact .input-section button {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: #4a9eff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  box-shadow: none;
+  white-space: nowrap;
+}
+
+.app.theme-compact .input-section button:hover {
+  background: #3d8ce6;
+  transform: none;
+  box-shadow: none;
+}
+
+.app.theme-compact .input-section button:active {
+  background: #3078cc;
+  transform: none;
+}
+
+.app.theme-compact .filter-section {
+  display: inline-flex;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+  animation: none;
+  background: #2a2a2a;
+  padding: 0.25rem;
+  border-radius: 4px;
+}
+
+.app.theme-compact .filter-section button {
+  padding: 0.375rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background-color: transparent;
+  color: #aaaaaa;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: visible;
+}
+
+.app.theme-compact .filter-section button::before {
+  display: none;
+}
+
+.app.theme-compact .filter-section button:hover {
+  color: #e0e0e0;
+  background-color: #333333;
+  transform: none;
+  box-shadow: none;
+}
+
+.app.theme-compact .filter-section button.active {
+  background: #4a9eff;
+  color: white;
+  box-shadow: none;
+}
+
+.app.theme-compact .todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  min-height: 30px;
+}
+
+.app.theme-compact .todo-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: #2a2a2a;
+  border: 1px solid #333333;
+  border-radius: 4px;
+  margin-bottom: 0.375rem;
+  transition: all 0.2s ease;
+  animation: none;
+  position: relative;
+  overflow: visible;
+}
+
+.app.theme-compact .todo-list li::before {
+  display: none;
+}
+
+.app.theme-compact .todo-list li:hover {
+  border-color: #4a9eff;
+  background: #323232;
+  box-shadow: none;
+  transform: none;
+}
+
+.app.theme-compact .todo-list li.completed {
+  opacity: 0.4;
+  background: #252525;
+}
+
+.app.theme-compact .todo-list li.completed:hover {
+  opacity: 0.6;
+}
+
+.app.theme-compact .todo-list li input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  border: 1.5px solid #555555;
+  border-radius: 3px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+  background-color: #2a2a2a;
+}
+
+.app.theme-compact .todo-list li input[type="checkbox"]:hover {
+  border-color: #4a9eff;
+  box-shadow: none;
+}
+
+.app.theme-compact .todo-list li input[type="checkbox"]:checked {
+  background: #4a9eff;
+  border-color: #4a9eff;
+}
+
+.app.theme-compact .todo-list li input[type="checkbox"]:checked::after {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 5px;
+  width: 3px;
+  height: 7px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  animation: none;
+}
+
+.app.theme-compact .todo-list li span {
+  flex: 1;
+  cursor: pointer;
+  user-select: none;
+  color: #e0e0e0;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  transition: color 0.2s ease;
+  word-break: break-word;
+  font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+}
+
+.app.theme-compact .todo-list li span:hover {
+  color: #ffffff;
+}
+
+.app.theme-compact .todo-list li.completed span {
+  text-decoration: line-through;
+  color: #666666;
+}
+
+.app.theme-compact .todo-list li button {
+  padding: 0.25rem 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: transparent;
+  color: #888888;
+  border: 1px solid #333333;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: none;
+  white-space: nowrap;
+}
+
+.app.theme-compact .todo-list li button:hover {
+  background: #d32f2f;
+  color: white;
+  border-color: #d32f2f;
+  transform: none;
+  box-shadow: none;
+}
+
+.app.theme-compact .todo-list li button:active {
+  background: #b71c1c;
+  transform: none;
+}
+
+.app.theme-compact .footer {
+  margin-top: 1rem;
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  background: #2a2a2a;
+  border-radius: 4px;
+  color: #aaaaaa;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: 1px solid #333333;
+  animation: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app.theme-compact .todo-list:empty::after {
+  content: 'タスクを追加して始めましょう！';
+  display: block;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  color: #666666;
+  font-size: 0.875rem;
+  font-weight: 400;
+  opacity: 1;
+}
