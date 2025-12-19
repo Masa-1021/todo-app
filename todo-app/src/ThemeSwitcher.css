@@ -1,0 +1,161 @@
+/* Theme Switcher Styles */
+.theme-switcher {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+}
+
+.theme-switcher-button {
+  padding: 0.625rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.95);
+  color: #333333;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.theme-switcher-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+.theme-dropdown {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  background: white;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  min-width: 250px;
+  overflow: hidden;
+  animation: dropdownFadeIn 0.2s ease;
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.theme-option {
+  display: block;
+  width: 100%;
+  padding: 0.875rem 1rem;
+  text-align: left;
+  background: white;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.theme-option:last-child {
+  border-bottom: none;
+}
+
+.theme-option:hover {
+  background: rgba(102, 126, 234, 0.08);
+}
+
+.theme-option.active {
+  background: rgba(102, 126, 234, 0.15);
+}
+
+.theme-option.active .theme-option-name {
+  color: #667eea;
+  font-weight: 700;
+}
+
+.theme-option-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 0.25rem;
+}
+
+.theme-option-description {
+  font-size: 0.8rem;
+  color: #666666;
+}
+
+/* Dark theme adjustments for compact theme */
+.app.theme-compact + .theme-switcher .theme-switcher-button {
+  background: rgba(42, 42, 42, 0.95);
+  color: #e0e0e0;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.app.theme-compact + .theme-switcher .theme-dropdown {
+  background: #2a2a2a;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.app.theme-compact + .theme-switcher .theme-option {
+  background: #2a2a2a;
+  border-bottom-color: rgba(255, 255, 255, 0.05);
+  color: #e0e0e0;
+}
+
+.app.theme-compact + .theme-switcher .theme-option:hover {
+  background: #323232;
+}
+
+.app.theme-compact + .theme-switcher .theme-option.active {
+  background: rgba(74, 158, 255, 0.2);
+}
+
+.app.theme-compact + .theme-switcher .theme-option-name {
+  color: #e0e0e0;
+}
+
+.app.theme-compact + .theme-switcher .theme-option.active .theme-option-name {
+  color: #4a9eff;
+}
+
+.app.theme-compact + .theme-switcher .theme-option-description {
+  color: #aaaaaa;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .theme-switcher {
+    top: 0.75rem;
+    right: 0.75rem;
+  }
+
+  .theme-switcher-button {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+  }
+
+  .theme-dropdown {
+    min-width: 200px;
+  }
+
+  .theme-option {
+    padding: 0.75rem 0.875rem;
+  }
+
+  .theme-option-name {
+    font-size: 0.875rem;
+  }
+
+  .theme-option-description {
+    font-size: 0.75rem;
+  }
+}
