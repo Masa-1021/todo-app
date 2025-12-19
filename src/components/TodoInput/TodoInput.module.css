@@ -1,0 +1,50 @@
+.todoInputForm {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.todoInputField {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.todoInputField:focus {
+  border-color: #4a90e2;
+}
+
+.todoInputButton {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  background-color: #4a90e2;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.todoInputButton:hover {
+  background-color: #3a7bc8;
+}
+
+.todoInputButton:active {
+  transform: scale(0.98);
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 640px) {
+  .todoInputForm {
+    flex-direction: column;
+  }
+
+  .todoInputButton {
+    width: 100%;
+  }
+}
