@@ -46,7 +46,20 @@ function App() {
     const today = new Date()
     today.setHours(0, 0, 0, 0)
     const due = new Date(dueDate)
-    return due < today
+    return !isNaN(due.getTime()) && due < today
+  }
+
+  const formatDueDate = (dueDate: string) => {
+    const date = new Date(dueDate)
+    if (isNaN(date.getTime())) return dueDate
+    return date.toLocaleDateString('ja-JP')
+  }
+
+  const getTodoClassName = (todo: Todo) => {
+    const classes = []
+    if (todo.completed) classes.push('completed')
+    if (!todo.completed && isOverdue(todo.dueDate)) classes.push('overdue')
+    return classes.join(' ')
   }
 
   return (
@@ -93,7 +106,7 @@ function App() {
 
       <ul className="todo-list">
         {filteredTodos.map(todo => (
-          <li key={todo.id} className={`${todo.completed ? 'completed' : ''} ${!todo.completed && isOverdue(todo.dueDate) ? 'overdue' : ''}`}>
+          <li key={todo.id} className={getTodoClassName(todo)}>
             <input
               type="checkbox"
               checked={todo.completed}
@@ -103,7 +116,7 @@ function App() {
               {todo.text}
               {todo.dueDate && (
                 <span className="due-date">
-                  期限: {new Date(todo.dueDate).toLocaleDateString('ja-JP')}
+                  期限: {formatDueDate(todo.dueDate)}
                 </span>
               )}
             </span>
