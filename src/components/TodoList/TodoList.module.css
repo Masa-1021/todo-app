@@ -1,0 +1,21 @@
+.todoList {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #888;
+}
+
+.emptyState p {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+.emptyHint {
+  font-size: 0.9rem !important;
+  color: #aaa;
+}
