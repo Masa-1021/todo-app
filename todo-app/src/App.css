@@ -80,6 +80,61 @@ h1 {
   }
 }
 
+/* Creator section styling */
+.creator-section {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: linear-gradient(
+    135deg,
+    rgba(102, 126, 234, 0.05),
+    rgba(118, 75, 162, 0.05)
+  );
+  border-radius: var(--radius-md);
+  animation: slideInDown 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.05s both;
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.creator-section label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.creator-section input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: white;
+  color: var(--color-text-primary);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.creator-section input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.creator-section input:focus {
+  border-color: var(--color-primary-start);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  outline: none;
+}
+
 /* Input section with modern styling */
 .input-section {
   display: flex;
@@ -350,8 +405,14 @@ h1 {
 }
 
 /* Todo text styling */
-.todo-list li span {
+.todo-content {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.todo-text {
   cursor: pointer;
   user-select: none;
   color: var(--color-text-primary);
@@ -361,13 +422,43 @@ h1 {
   word-break: break-word;
 }
 
-.todo-list li span:hover {
+.todo-text:hover {
   color: var(--color-primary-start);
 }
 
-.todo-list li.completed span {
+.todo-list li.completed .todo-text {
   text-decoration: line-through;
   color: var(--color-text-muted);
+}
+
+/* Creator badge styling */
+.creator-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-primary-start);
+  background: linear-gradient(
+    135deg,
+    rgba(102, 126, 234, 0.1),
+    rgba(118, 75, 162, 0.1)
+  );
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  width: fit-content;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: default;
+}
+
+.todo-list li:hover .creator-badge {
+  background: linear-gradient(
+    135deg,
+    rgba(102, 126, 234, 0.15),
+    rgba(118, 75, 162, 0.15)
+  );
+}
+
+.todo-list li.completed .creator-badge {
+  opacity: 0.5;
 }
 
 /* Delete button with gradient */
@@ -425,6 +516,16 @@ h1 {
   h1 {
     font-size: 2rem;
     margin-bottom: 2rem;
+  }
+  
+  .creator-section {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+  
+  .creator-section label {
+    font-size: 0.875rem;
   }
   
   .input-section {
