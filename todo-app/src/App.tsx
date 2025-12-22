@@ -111,10 +111,10 @@ function App() {
               checked={todo.completed}
               onChange={() => toggleTodo(todo.id)}
             />
-            <span onClick={() => toggleTodo(todo.id)}>
-              {todo.text}
+            <div className="todo-content">
+              <span className="todo-text" onClick={() => toggleTodo(todo.id)}>{todo.text}</span>
               {todo.creator && <span className="creator-badge">by {todo.creator}</span>}
-            </span>
+            </div>
             <button onClick={() => deleteTodo(todo.id)}>削除</button>
           </li>
         ))}

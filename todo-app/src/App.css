@@ -405,8 +405,14 @@ h1 {
 }
 
 /* Todo text styling */
-.todo-list li span {
+.todo-content {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.todo-text {
   cursor: pointer;
   user-select: none;
   color: var(--color-text-primary);
@@ -414,16 +420,13 @@ h1 {
   line-height: 1.5;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   word-break: break-word;
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
 }
 
-.todo-list li span:hover {
+.todo-text:hover {
   color: var(--color-primary-start);
 }
 
-.todo-list li.completed span {
+.todo-list li.completed .todo-text {
   text-decoration: line-through;
   color: var(--color-text-muted);
 }
@@ -441,9 +444,9 @@ h1 {
   );
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
-  margin-top: 0.25rem;
   width: fit-content;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: default;
 }
 
 .todo-list li:hover .creator-badge {
