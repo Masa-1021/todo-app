@@ -8,6 +8,7 @@ import type { Todo, FilterType } from './types'
 function App() {
   const [todos, setTodos] = useState<Todo[]>([])
   const [inputText, setInputText] = useState('')
+  const [creatorName, setCreatorName] = useState('')
   const [filter, setFilter] = useState<FilterType>('all')
   const [theme, setTheme] = useState<ThemeType>(() => {
     const savedTheme = localStorage.getItem('todo-app-theme')
@@ -27,7 +28,8 @@ function App() {
     const newTodo: Todo = {
       id: Date.now(),
       text: inputText,
-      completed: false
+      completed: false,
+      creator: creatorName.trim() || undefined
     }
     
     setTodos([...todos, newTodo])
@@ -58,6 +60,17 @@ function App() {
       <div className={`app theme-${theme}`}>
         <h1>Todo App</h1>
       
+      <div className="creator-section">
+        <label htmlFor="creator-input">登録者名:</label>
+        <input
+          id="creator-input"
+          type="text"
+          value={creatorName}
+          onChange={(e) => setCreatorName(e.target.value)}
+          placeholder="名前を入力（任意）"
+        />
+      </div>
+
       <div className="input-section">
         <input
           type="text"
@@ -98,7 +111,10 @@ function App() {
               checked={todo.completed}
               onChange={() => toggleTodo(todo.id)}
             />
-            <span onClick={() => toggleTodo(todo.id)}>{todo.text}</span>
+            <span onClick={() => toggleTodo(todo.id)}>
+              {todo.text}
+              {todo.creator && <span className="creator-badge">by {todo.creator}</span>}
+            </span>
             <button onClick={() => deleteTodo(todo.id)}>削除</button>
           </li>
         ))}

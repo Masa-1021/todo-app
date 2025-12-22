@@ -86,4 +86,56 @@ test.describe('Todo App', () => {
     await expect(page.getByText('Active Todo')).toBeVisible();
     await expect(page.getByText('Completed Todo')).toBeVisible();
   });
+
+  test('should display creator name when provided', async ({ page }) => {
+    await page.goto('/');
+    
+    // Fill in creator name
+    const creatorInput = page.getByRole('textbox', { name: '登録者名:' });
+    await creatorInput.fill('田中太郎');
+    
+    // Add a todo
+    const todoInput = page.locator('input[type="text"][placeholder*="新しいTodo"]');
+    await todoInput.fill('Test Todo with Creator');
+    await page.getByRole('button', { name: '追加' }).click();
+    
+    // Verify the creator badge is displayed
+    await expect(page.getByText('by 田中太郎')).toBeVisible();
+  });
+
+  test('should not display creator badge when name is not provided', async ({ page }) => {
+    await page.goto('/');
+    
+    // Leave creator name empty and add a todo
+    const todoInput = page.locator('input[type="text"][placeholder*="新しいTodo"]');
+    await todoInput.fill('Todo without Creator');
+    await page.getByRole('button', { name: '追加' }).click();
+    
+    // Verify the todo text is visible
+    await expect(page.getByText('Todo without Creator')).toBeVisible();
+    
+    // Verify no creator badge is displayed (check that "by " text doesn't exist)
+    const creatorBadges = page.locator('.creator-badge');
+    await expect(creatorBadges).toHaveCount(0);
+  });
+
+  test('should support multiple different creators', async ({ page }) => {
+    await page.goto('/');
+    
+    // Add first todo with creator 1
+    const creatorInput = page.getByRole('textbox', { name: '登録者名:' });
+    await creatorInput.fill('田中太郎');
+    const todoInput = page.locator('input[type="text"][placeholder*="新しいTodo"]');
+    await todoInput.fill('First Todo');
+    await page.getByRole('button', { name: '追加' }).click();
+    
+    // Add second todo with creator 2
+    await creatorInput.fill('佐藤花子');
+    await todoInput.fill('Second Todo');
+    await page.getByRole('button', { name: '追加' }).click();
+    
+    // Verify both creators are displayed
+    await expect(page.getByText('by 田中太郎')).toBeVisible();
+    await expect(page.getByText('by 佐藤花子')).toBeVisible();
+  });
 });
